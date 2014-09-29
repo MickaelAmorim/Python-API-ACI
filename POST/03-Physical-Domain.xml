@@ -1,0 +1,5 @@
+<polUni>
+      <physDomP name="QvPC_Domain">
+         <infraRsVlanNs tDn="uni/infra/vlanns-QvPC_Pool-static"/>
+      </physDomP>
+</polUni>
