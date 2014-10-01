@@ -72,8 +72,6 @@ def main() :
         config = yaml.safe_load( config )
 
     cookies=LoginApicRequest(config)
-    #cookies=apic_login(config['host'], config['name'], config['passwd'])
-    #print(cookies)
     post_runConfig(config, cookies )
 
 if __name__ == '__main__':

@@ -8,6 +8,15 @@ key_args = [{'name': 'tenant', 'help': 'Tenant name'},
             {'name': 'subnet', 'help': 'Subnet IP'},
             ]
 
+def input_key_args(msg='\nPlease specify the Subnet:'):
+    print msg
+    args = []
+    args.append(get_raw_input("Tenant name (required): ", required=True))
+    args.append(get_raw_input("Bridge Domain (required): ", required=True))
+    args.append(get_raw_input("Subnet IP (required): ", required=True))
+    return args
+
+
 def delete_subnet(modir, tenant, bridge_domain, subnet):
 
     # Query a parent

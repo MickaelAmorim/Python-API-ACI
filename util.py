@@ -22,7 +22,6 @@ def input_tenant_name(msg='\nPlease input Tenant info:'):
     print msg
     return get_raw_input("Tenant Name (required): ", required=True)
 
-
 def input_login_info(msg='\nPlease follow the wizard and finish the configuration.'):
     print msg
     print 'Login info:'
@@ -107,7 +106,6 @@ def LoginApicRequest(config):
         while(1):
             try:
                 r = requests.post( url, data=json.dumps(auth), timeout=1 )
-
                 break
             except Exception as e:
                 i=i+1
@@ -115,24 +113,21 @@ def LoginApicRequest(config):
 
         status = r.status_code
         FailureRequest(status)
-    #   print status
-    #   print r.text
         cookies = r.cookies
         time.sleep(1)
         cpt=cpt+1
-        timeout(status, cpt, 100, "exit")
+        timeout(cpt, 100, "exit")
         return cookies
 
-def timeout(status, cpt, time, output) :
-
-    if status != 200:
-        print("Problem status")
+def timeout(cpt, time, output) :
 
     if cpt==time and output=="exit" :
+        print("timeout")
         print("program exit")
         sys.exit(0)
 
     if cpt==time and output=="break" :
+        print("timeout")
         print("break")
         sys.exit(0)
 

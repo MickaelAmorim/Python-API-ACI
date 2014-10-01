@@ -1,6 +1,6 @@
 <polUni>
    <infraInfra dn="uni/infra">
-      <fvnsVlanInstP allocMode="static" name="QvPC_Pool">
+      <fvnsVlanInstP allocMode="static" name="QvPC_Pool_test">
          <fvnsEncapBlk from="vlan-20" to="vlan-234"/>
       </fvnsVlanInstP>
    </infraInfra>

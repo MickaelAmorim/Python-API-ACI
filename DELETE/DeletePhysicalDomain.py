@@ -8,6 +8,10 @@ DEFAULT_VLAN_POOL = ''
 
 key_args = [{'name': 'physical_domain', 'help': 'Physical Domain name'}]
 
+def input_key_args(msg='\nPlease specify the Physical Domain:'):
+    print msg
+    return get_raw_input("Physical Domain Name (required): ", required=True)
+
 
 def delete_physical_domain(modir, physical_domain):
 
