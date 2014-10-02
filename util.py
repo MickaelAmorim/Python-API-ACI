@@ -11,6 +11,7 @@ from cobra.mit.access import MoDirectory
 from cobra.mit.session import LoginSession
 from cobra.internal.codec.xmlcodec import toXMLStr
 from cobra.mit.request import ConfigRequest
+import collections
 
 from cobra.model.fv import Tenant
 
@@ -202,3 +203,13 @@ def get_optional_input(prompt, options, num_accept=False, required=False):
             pass
     print 'Not appropriate argument, please try again.'
     get_optional_input(prompt, options, num_accept=num_accept, required=required)
+
+def convert(data):
+    if isinstance(data, basestring):
+        return str(data)
+    elif isinstance(data, collections.Mapping):
+        return dict(map(convert, data.iteritems()))
+    elif isinstance(data, collections.Iterable):
+        return type(data)(map(convert, data))
+    else:
+        return data

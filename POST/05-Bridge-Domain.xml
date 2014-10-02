@@ -1,0 +1,9 @@
+<polUni>
+	<fvTenant name="test123">
+		<fvCtx name="QvPC-ctx"/>
+		<fvBD arpFlood="yes" name="BD-vlan300">
+			<fvRsCtx tnFvCtxName="QvPC-ctx"/>
+			<fvSubnet ip="192.168.20.253/24"/>
+		</fvBD>
+	</fvTenant>
+</polUni>

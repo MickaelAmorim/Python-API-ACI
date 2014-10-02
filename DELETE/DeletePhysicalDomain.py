@@ -17,7 +17,7 @@ def delete_physical_domain(modir, physical_domain):
 
     # Query the physical domain
 
-    phys_domp = modir.lookupByDn('uni/phys-'+physical_domain[0])
+    phys_domp = modir.lookupByDn('uni/phys-'+physical_domain)
     if isinstance(phys_domp, DomP):
         # delete the Physical Domain
         phys_domp.delete()

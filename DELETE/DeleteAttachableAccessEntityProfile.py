@@ -8,6 +8,10 @@ DEFAULT_ENABLE_INFRASTRUCTURE_VLAN = False
 key_args = [{'name': 'profile_name', 'help': 'Attachable Access Entity Profile name'}]
 
 
+def input_key_args(msg='\nPlease specify the Attachable Access Entity Profile:'):
+    print msg
+    return get_raw_input("Entity Profile Name (required): ", required=True)
+
 def delete_attachable_access_entity_profile(modir, profile_name):
 
     # Query a parent

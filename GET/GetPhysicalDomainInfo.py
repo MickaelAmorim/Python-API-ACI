@@ -1,28 +1,32 @@
 __author__ = 'Amorim'
 
+
 from util import *
 import sys
 import requests
 import json
 from pprint import pprint
-import collections
 
-
-def RecupVlansValuesJson(data) :
+def RecupPhysicalDomainValues(data) :
     result=[]
     data=convert(data)
     imdata=data['imdata']
     for t in imdata :
-        Stab=t['fvBD']
+        Stab=t['fvnsEncapBlk']
         for u in Stab :
             result.append(Stab['attributes']['name'])
+
+    for j in imdata :
+        StabBis=k['fvnsEncapBlk']
+        for k in StabBis :
+            result.append(StabBis['attributes']['name'])
 
     result.sort()
     return result
 
+def GetPhDo(config, cookies):
 
-def GetVlanName(config, cookies):
-    url='https://'+config['host']+'/api/node/mo/uni/tn-'+config['tenant']+'.json?query-target=children&target-subtree-class=fvBD'
+    url='https://'+config['host']+'/api/node/mo/uni/infra.json?query-target=subtree&target-subtree-class=fvnsVlanInstP&target-subtree-class=fvnsEncapBlk&query-target=subtree'
     print '++++++++ REQUEST GET ++++++++'
     print url
     print '------------------------------'
@@ -34,7 +38,7 @@ def GetVlanName(config, cookies):
     pprint (convert(r.json()))
     print '-------------------------------'
 
-    return RecupVlansValuesJson(r.json())
+    #return RecupPhysicalDomainValues(r.json())
 
 def input_log_info() :
     config={}
@@ -42,9 +46,8 @@ def input_log_info() :
     config['host']=raw_input("Host Name (required) :    ")
     config['name']=raw_input("User Name (required):     ")
     config['passwd']=raw_input("Password (required):    ")
-    config['tenant']=raw_input("Tenant Name (required): ")
 
-    if config['host'] == None or config['name'] == None or config['passwd'] == None or config['tenant'] == None :
+    if config['host'] == None or config['name'] == None or config['passwd'] == None :
         print("Error parameter insertion")
         sys.exit(0)
 
@@ -56,12 +59,10 @@ if __name__ == '__main__':
         config['host'] = sys.argv[1]
         config['name'] = sys.argv[2]
         config['passwd'] = sys.argv[3]
-        config['tenant'] = sys.argv[4]
 
     except Exception as e:
         print str(e)
         config=input_log_info()
 
     cookies=LoginApicRequest(config)
-    print GetVlanName(config, cookies)
-
+    GetPhDo(config, cookies)

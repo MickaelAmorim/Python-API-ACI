@@ -1,0 +1,12 @@
+<polUni>
+	<fvTenant name="test123">
+        <fvAp name="QvPC-App">
+			<fvAEPg name="EPG-test">
+				<fvRsBd tnFvBDName="BD-vlan20"/>
+				<fvRsPathAtt encap="vlan-20" instrImedcy="immediate" tDn="topology/pod-1/paths-101/pathep-[eth1/3]"/>
+				<fvRsPathAtt encap="vlan-20" instrImedcy="immediate" tDn="topology/pod-1/paths-102/pathep-[eth1/3]"/>
+				<fvRsPathAtt encap="vlan-20" instrImedcy="immediate" tDn="topology/pod-1/paths-103/pathep-[eth1/3]"/>
+			</fvAEPg>
+		</fvAp>
+	</fvTenant>
+</polUni>
