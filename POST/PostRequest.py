@@ -12,7 +12,7 @@ import requests
 def post_type_file(package,url,file, cookies) :
     print 'url is (%s)' %url
 
-    r = requests.post( url,cookies=cookies, files={'file':package} )
+    r = requests.post( url,cookies=cookies, files={'file':package})
 
     result = xml.dom.minidom.parseString( r.text )
     status = r.status_code
@@ -30,7 +30,7 @@ def post_type_xml(package, url,file, config, cookies) :
     print '------------------------------'
 
     url = 'http://%s/api/node/mo/.xml' % config['host']
-    r = requests.post( url,cookies=cookies,data=data )
+    r = requests.post( url,cookies=cookies,data=data, verify=False )
     result = xml.dom.minidom.parseString( r.text )
     status = r.status_code
 
